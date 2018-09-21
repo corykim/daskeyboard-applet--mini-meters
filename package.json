@@ -1,0 +1,15 @@
+{
+  "name": "cpu-usage",
+  "version": "1.0.0",
+  "description": "display the cpu usage on your daskeyboard Q device",
+  "main": "track-cpu.js",
+  "author": "Ahmed Loudghiri",
+  "license": "MIT",
+  "scripts": {
+    "start": "node track-cpu.js"
+  },
+  "dependencies": {
+    "os-utils": "^0.0.14",
+    "request": "^2.88.0"
+  }
+}
