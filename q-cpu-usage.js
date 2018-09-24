@@ -59,7 +59,7 @@ function getCpuUsage() {
         'zoneId': zone.toString(),
         'color': getColor(index, numberOfKeysToLight),
         'effect': 'SET_COLOR',
-        'pid': 'Q_MATRIX',
+        'pid': 'DK5QPID',
         'isMuted': 'true', // attribute to not notify on the screen and on the Q-button
         'clientName': 'q-cpu-usage',
         'message': '',
