@@ -8,7 +8,7 @@ This script displays CPU usage as a progress bar on
 
 Install [yarn](https://yarnpkg.com/en/) and [node](https://nodejs.org/en/)
 
-Das Keyboard Q 
+[Das Keyboard Q](https://daskeyboard.io/get-started/download) running 
 
 ## Installation
 
