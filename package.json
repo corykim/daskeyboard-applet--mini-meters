@@ -1,13 +1,26 @@
 {
   "name": "q-cpu-usage",
+  "displayName": "Word Count",
+  "publisher": "Monseigneur",
+  "author": {
+		"name": "AhmedLoud"
+	},
   "version": "1.0.0",
   "description": "Displays CPU usage on a Das Keyboard Q device",
+  "icon": "assets/q-cpu-usage.png",
   "main": "q-cpu-usage.js",
   "author": "Ahmed Loudghiri",
   "license": "MIT",
   "scripts": {
     "start": "node q-cpu-usage.js"
   },
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/AhmedLoud/QcpuUsage.git"
+	},
+  "engines": {
+		"das-keyboard-q": "2.0.x"
+	}
   "dependencies": {
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
