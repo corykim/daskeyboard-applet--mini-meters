@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AhmedLoud/QcpuUsage.git"
+    "url": "https://github.com/corykim/q-applet-cpu-usage"
   },
   "engines": {
     "das-keyboard-q": "2.0.x"
