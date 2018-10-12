@@ -12,7 +12,7 @@ const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00'
 
 
 class CpuUsage extends q.DesktopApp {
-  run() {
+  async run() {
     this.getCpuUsage();
   }
 
