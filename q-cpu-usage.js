@@ -33,9 +33,9 @@ class CpuUsage extends q.DesktopApp {
       const numberOfKeysToLight = Math.round(numberOfKeys * v) + 1;
       let points = [];
 
-      zoneIds.forEach((zone, index) => {
-        points.push(new q.Point(this.getColor(index, numberOfKeysToLight)));
-      });
+      for (let i =0; i<numberOfKeys; i++) {        
+        points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
+      };
 
       q.Send(new q.Signal([points]))
     });
