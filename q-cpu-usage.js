@@ -29,7 +29,7 @@ class CpuUsage extends q.DesktopApp {
 
   /** get the cpu usage percentage  */
   getCpuUsage() {
-    os.cpuUsage(function (v) {
+    os.cpuUsage((v) => {
       const numberOfKeys = zoneIds.length;
       // multiply the cpu percentage by the number total of keys 
       const numberOfKeysToLight = Math.round(numberOfKeys * v) + 1;
