@@ -22,5 +22,8 @@
     "daskeyboard-applet": "^2.2.0",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
+  },
+  "qOptions": {
+    
   }
 }
