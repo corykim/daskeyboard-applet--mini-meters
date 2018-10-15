@@ -43,7 +43,3 @@ class CpuUsage extends q.DesktopApp {
 }
 
 const cpuUsage = new CpuUsage();
-cpuUsage.start();
-
-
-
