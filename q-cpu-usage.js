@@ -6,7 +6,8 @@ const q = require('daskeyboard-applet');
 
 // Color associated to each coordinate
 const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00', '#FF0000',
-  '#FF0000', '#FF0000', '#FF0000'];
+  '#FF0000', '#FF0000', '#FF0000'
+];
 
 
 class CpuUsage extends q.DesktopApp {
@@ -33,11 +34,14 @@ class CpuUsage extends q.DesktopApp {
       const numberOfKeysToLight = Math.round(numberOfKeys * v) + 1;
       let points = [];
 
-      for (let i =0; i<numberOfKeys; i++) {        
+      for (let i = 0; i < numberOfKeys; i++) {
         points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
       };
 
-      q.Send(new q.Signal([points]))
+      q.Send(new q.Signal([points]), {
+        name: "CPU Usage",
+        message: "CPU usage is at" + Math.round(v * 100) + "%"
+      })
     });
   }
 }
