@@ -40,7 +40,8 @@ class CpuUsage extends q.DesktopApp {
 
       q.Send(new q.Signal([points], {
         name: "CPU Usage",
-        message: Math.round(v * 100) + "%"
+        message: Math.round(v * 100) + "%",
+        isMuted: true,
       }))
     });
   }
