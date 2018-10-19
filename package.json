@@ -2,7 +2,7 @@
   "name": "q-cpu-usage",
   "displayName": "CPU Usage",
   "publisher": "Monseigneur",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Displays CPU usage on a Das Keyboard Q device",
   "icon": "assets/q-cpu-usage.png",
   "main": "q-cpu-usage.js",
