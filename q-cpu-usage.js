@@ -38,10 +38,10 @@ class CpuUsage extends q.DesktopApp {
         points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
       };
 
-      q.Send(new q.Signal([points]), {
+      q.Send(new q.Signal([points], {
         name: "CPU Usage",
         message: "CPU usage is at" + Math.round(v * 100) + "%"
-      })
+      }))
     });
   }
 }
