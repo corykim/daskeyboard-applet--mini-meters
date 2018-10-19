@@ -19,7 +19,7 @@
     "das-keyboard-q": "2.0.x"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.3.0",
+    "daskeyboard-applet": "^2.3.4",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
   },
