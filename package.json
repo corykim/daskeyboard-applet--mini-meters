@@ -16,10 +16,10 @@
     "url": "https://github.com/corykim/q-applet-cpu-usage"
   },
   "engines": {
-    "das-keyboard-q": "~2.4.3"
+    "das-keyboard-q": "2.4.x"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.3.4",
+    "daskeyboard-applet": "~2.4.3",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
   },
