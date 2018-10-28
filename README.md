@@ -10,7 +10,7 @@ This script displays CPU usage as a progress bar on
 Requires a Das Keyboard Q series: www.daskeyboard.com/5q
 
 ## Copyright / License
-bb
+
 
 Copyright 2014 - 2018 Das Keyboard / Metadot Corp.
 
