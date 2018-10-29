@@ -8,7 +8,7 @@
   "appUrl": "",
   "isSingleton": false,
   "videoUrl": "",
-  "icon": "images/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxicon.png",
+  "icon": "assets/cpu.png",
   "image": "assets/q-cpu-usage.png",
   "publisherName": "Das Keyboard",
   "authorName": "Das Keyboard team",
