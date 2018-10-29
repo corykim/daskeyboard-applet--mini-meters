@@ -4,7 +4,7 @@
   "version": "1.0.3",
   "description": "Displays CPU usage on a Das Keyboard Q device",
   "longDescription": "Keep an eye on the CPU activity on your Q keyboard!",
-  "officialProduct": "",
+  "officialProductName": "",
   "appUrl": "",
   "isSingleton": false,
   "videoUrl": "",
