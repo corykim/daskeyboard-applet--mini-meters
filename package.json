@@ -1,19 +1,27 @@
 {
   "name": "q-cpu-usage",
   "displayName": "CPU Usage",
-  "publisher": "Monseigneur",
   "version": "1.0.3",
   "description": "Displays CPU usage on a Das Keyboard Q device",
-  "icon": "assets/q-cpu-usage.png",
+  "longDescription": "Keep an eye on the CPU activity on your Q keyboard!",
+  "officialProductName": "",
+  "appUrl": "",
+  "isSingleton": false,
+  "videoUrl": "",
+  "icon": "assets/cpu.png",
+  "image": "assets/q-cpu-usage.png",
+  "publisherName": "Das Keyboard",
+  "authorName": "Das Keyboard team",
+  "authorUrl": "https://twitter.com/daskeyboard",
+  "issuesUrl": "https://github.com/metadot/q-applet-cpu-usage/issues",
+  "homepage": "https://github.com/DasKeyboard/q-applet-cpu-usage",
+  "developerRepoUrl": "https://github.com/metadot/q-applet-cpu-usage",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt",
+  "changelogUrl": "",
+  "qActionUrl": "",
   "main": "q-cpu-usage.js",
-  "author": "Ahmed Loudghiri",
-  "license": "MIT",
   "scripts": {
     "start": "node q-cpu-usage.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/corykim/q-applet-cpu-usage"
   },
   "engines": {
     "das-keyboard-q": "2.4.x"
