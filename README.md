@@ -1,16 +1,26 @@
-# CPU Usage: displays CPU usage on a Das Keyboard Q device
+# Q Applet: CPU Monitor
 
-This applet displays CPU usage as a progress bar on 
+This applet displays the CPU usage as a progress bar on 
 [`,1,2,3,4,5,6,7,8,9] keys of a Das Keyboard Q Series.
 
+[GitHub repository](https://github.com/daskeyboard/q-applet-cpu-usage)
+
 ![CPU meter on a Das Keybaord Q](./assets/q-cpu-usage.png "Q CPU usage")
+
+## Changelog
+
+[CHANGELOG.MD](CHANGELOG.md)
 
 ## Installation
 
 Requires a Das Keyboard Q series: www.daskeyboard.com/5q
 
-## Copyright / License
+Installation, configuration and uninstallation of applets is done within 
+the Q Desktop application (https://www.daskeyboard.io/get-started/software/)
 
+## Docs & Contribute
+
+## Copyright / License
 
 Copyright 2014 - 2018 Das Keyboard / Metadot Corp.
 
