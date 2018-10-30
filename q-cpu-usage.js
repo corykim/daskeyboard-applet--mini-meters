@@ -19,7 +19,7 @@ class CpuUsage extends q.DesktopApp {
 
   // call this function every pollingInterval
   async run() {
-    this.getCpuUsage();
+    return this.getCpuUsage();
   }
 
   /** get a color of a zone depending on it's index on the zone array */
@@ -36,27 +36,33 @@ class CpuUsage extends q.DesktopApp {
 
   /** get the cpu usage percentage  */
   getCpuUsage() {
-    os.cpuUsage((v) => {
-      const numberOfKeys = 10;
-      // multiply the cpu percentage by the number total of keys 
-      const numberOfKeysToLight = Math.round(numberOfKeys * v) + 1;
-      let points = [];
+    return new Promise((resolve, reject) => {
+      os.cpuUsage((v) => {
+        const numberOfKeys = 10;
+        // multiply the cpu percentage by the number total of keys 
+        const numberOfKeysToLight = Math.round(numberOfKeys * v) + 1;
+        let points = [];
 
-      // create a list of points (zones) with a color). Each point 
-      // correspond to an LED
-      for (let i = 0; i < numberOfKeys; i++) {
-        points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
-      }
+        // create a list of points (zones) with a color). Each point 
+        // correspond to an LED
+        for (let i = 0; i < numberOfKeys; i++) {
+          points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
+        }
 
-      // send list of RGB zones to Q keyboard
-      this.sendLocal(new q.Signal({
-        points: [points],
-        name: "CPU Usage",
-        message: Math.round(v * 100) + "%",
-        isMuted: true,
-      }));
-    });
+        // send list of RGB zones to Q keyboard
+        resolve(new q.Signal({
+          points: [points],
+          name: "CPU Usage",
+          message: Math.round(v * 100) + "%",
+          isMuted: true,
+        }));
+      });
+    })
   }
 }
+
+module.exports = {
+  CpuUsage: CpuUsage
+};
 
 const cpuUsage = new CpuUsage();
