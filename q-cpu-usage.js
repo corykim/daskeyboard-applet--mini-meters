@@ -1,10 +1,10 @@
-// Library to make track cpuUsage
-// if not installed run npm install request
+// Library to track cpuUsage
 const os = require('os-utils');
 
+// Library to send signal to Q keyboards
 const q = require('daskeyboard-applet');
 
-// Color associated to each coordinate
+// Color associated to cpu activity from low (green) to high (red).
 const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00', '#FF0000',
   '#FF0000', '#FF0000', '#FF0000'
 ];
@@ -13,9 +13,11 @@ const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00'
 class CpuUsage extends q.DesktopApp {
   constructor() {
     super();
+    // run every 3000 ms
     this.pollingInterval = 3000;
   }
 
+  // call this function every pollingInterval
   async run() {
     this.getCpuUsage();
   }
@@ -24,7 +26,8 @@ class CpuUsage extends q.DesktopApp {
   getColor(zoneIndex, numberOfKeysToLight) {
     if (zoneIndex > numberOfKeysToLight) {
       // if the zone is after the number max of keys to light. Turn off the light
-      return '#000000'; // Black color = no light
+      // Black color = no light
+      return '#000000';
     } else {
       // turn on the zone with the proper color
       return colors[zoneIndex];
@@ -39,16 +42,19 @@ class CpuUsage extends q.DesktopApp {
       const numberOfKeysToLight = Math.round(numberOfKeys * v) + 1;
       let points = [];
 
+      // create a list of points (zones) with a color). Each point 
+      // correspond to an LED
       for (let i = 0; i < numberOfKeys; i++) {
         points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
-      };
+      }
 
+      // send list of RGB zones to Q keyboard
       this.sendLocal(new q.Signal({
-        points: [points], 
+        points: [points],
         name: "CPU Usage",
         message: Math.round(v * 100) + "%",
         isMuted: true,
-      }))
+      }));
     });
   }
 }
