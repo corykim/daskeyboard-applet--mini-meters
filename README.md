@@ -23,6 +23,8 @@ the Q Desktop application (https://www.daskeyboard.io/get-started/software/)
 
 ## Docs & Contribute
 
+Pull requests welcome.
+
 ## Copyright / License
 
 Copyright 2014 - 2018 Das Keyboard / Metadot Corp.
