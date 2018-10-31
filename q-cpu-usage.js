@@ -9,12 +9,15 @@ const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00'
   '#FF0000', '#FF0000', '#FF0000'
 ];
 
+const logger = q.logger;
+
 
 class CpuUsage extends q.DesktopApp {
   constructor() {
     super();
     // run every 3000 ms
     this.pollingInterval = 3000;
+    logger.info("CPU Usage Meter ready to go!");
   }
 
   // call this function every pollingInterval
