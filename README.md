@@ -8,7 +8,7 @@ Displays the CPU usage as a progress bar on a Das Keyboard Q Series.
 
 CPU Monitor as a progress bar on keys `,1,2,3,4,5,6,7,8,9
 
-![CPU meter on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/q-applet-cpu-usage/master/assets/q-cpu-usage.png "Q CPU usage")
+![CPU meter on a Das Keybaord Q](https://raw.githubusercontent.com/daskeyboard/daskeyboard-applet--cpu-monitor/master/assets/q-cpu-usage.png "Q CPU usage")
 
 ## Changelog
 
