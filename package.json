@@ -6,7 +6,7 @@
   "longDescription": "Keep an eye on the CPU activity on your Q keyboard!",
   "officialProductName": "",
   "appUrl": "",
-  "isSingleton": false,
+  "isSingleton": true,
   "videoUrl": "",
   "icon": "assets/cpu.png",
   "image": "assets/q-cpu-usage.png",
