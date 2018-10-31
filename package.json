@@ -1,6 +1,6 @@
 {
   "name": "q-cpu-usage",
-  "displayName": "CPU Usage",
+  "displayName": "CPU Monitor",
   "version": "1.0.2",
   "description": "Displays CPU usage on a Das Keyboard Q device",
   "longDescription": "Keep an eye on the CPU activity on your Q keyboard!",
