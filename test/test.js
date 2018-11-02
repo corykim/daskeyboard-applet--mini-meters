@@ -37,7 +37,6 @@ describe('CpuUsage', function () {
       const actual = testLights(percent);
       const message = `For CPU usage ${percent}, I have ${actual} lights `
         + `(expected ${expected})`;  
-      console.log(message);    
       assert(expected === actual, message);
     }
 
@@ -52,6 +51,7 @@ describe('CpuUsage', function () {
     assertLights(0.7, 7);
     assertLights(0.8, 8);
     assertLights(0.9, 9);
+    assertLights(0.95, 10);
     assertLights(1.0, 10);
     assertLights(1.1, 10);
   });
