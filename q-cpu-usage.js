@@ -27,7 +27,7 @@ class CpuUsage extends q.DesktopApp {
         points: [this.generatePoints(percent)],
         name: "CPU Usage",
         message: Math.round(percent * 100) + "%",
-        isMuted: true,
+        isMuted: true, // don't flash the Q button on each signal
       });
     });
   }
