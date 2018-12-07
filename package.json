@@ -30,7 +30,7 @@
     "das-keyboard-q": "3.0.0"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.7.12",
+    "daskeyboard-applet": "^2.10.4",
     "mocha": "^5.2.0",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
