@@ -23,7 +23,7 @@ the Q Desktop application (https://www.daskeyboard.com/q)
 
 ## Running tests
 
-    yarn test
+- `yarn test`
 
 ## Contributions
 
