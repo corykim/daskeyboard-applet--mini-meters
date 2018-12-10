@@ -9,7 +9,7 @@
   "isSingleton": true,
   "videoUrl": "",
   "icon": "assets/icon.png",
-  "image": "assets/q-cpu-usage.png",
+  "image": "assets/image-missing.png",
   "publisher": "Das Keyboard",
   "authorName": "Das Keyboard",
   "authorUrl": "https://twitter.com/daskeyboard",
@@ -45,9 +45,6 @@
           "y": 1
         }
       }
-    },
-    "applet": {
-      "defaults": {}
     }
   }
 }
