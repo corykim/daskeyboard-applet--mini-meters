@@ -1,7 +1,7 @@
 {
   "name": "daskeyboard-applet--cpu-usage",
   "displayName": "CPU Usage",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Displays CPU usage on a Das Keyboard Q device",
   "longDescription": "Keep an eye on the CPU activity on your Q keyboard!",
   "officialProductName": "CPU Usage",
@@ -30,7 +30,7 @@
     "das-keyboard-q": "3.0.0"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.10.6",
+    "daskeyboard-applet": "^2.10.9",
     "mocha": "^5.2.0",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
