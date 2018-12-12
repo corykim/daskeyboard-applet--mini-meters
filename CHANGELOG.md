@@ -8,3 +8,8 @@ First release
 
 New images and new titles added (CPU Monitor become CPU Usage).
 README and Package.json updated.
+
+## Version 1.1.0 - December 12, 2018
+
+Background profile is displayed instead of to send a signal with
+a black color.
