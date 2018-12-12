@@ -1,15 +1,13 @@
-# Changelog Q Applet CPU Usage
+#### 1.1.1 (2018-12-12)
 
-## Version 1.0.0 - October 30, 2018
+##### Chores
 
-First release
+*  version updated. (a94e4c52)
+*  bump qbuzz version (5588ded0)
 
-## Version 1.0.6 - December 05, 2018
+##### New Features
 
-New images and new titles added (CPU Monitor become CPU Usage).
-README and Package.json updated.
-
-## Version 1.1.0 - December 12, 2018
-
-Background profile is displayed instead of to send a signal with
-a black color.
+* **signal:**
+  *  Wipe old signals on process exit as well (31690fe0)
+  *  Applet deletes previous signal, so that the keyboard returns to scheme color (b8b5b701)
+* **signals:**  Do a better job of removing old signals (4504442a)
