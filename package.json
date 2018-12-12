@@ -9,7 +9,7 @@
   "isSingleton": true,
   "videoUrl": "",
   "icon": "assets/icon.png",
-  "image": "assets/q-cpu-usage.png",
+  "image": "assets/image-missing.png",
   "publisher": "Das Keyboard",
   "authorName": "Das Keyboard",
   "authorUrl": "https://twitter.com/daskeyboard",
@@ -30,7 +30,7 @@
     "das-keyboard-q": "3.0.0"
   },
   "dependencies": {
-    "daskeyboard-applet": "^2.10.4",
+    "daskeyboard-applet": "^2.10.6",
     "mocha": "^5.2.0",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
@@ -45,9 +45,6 @@
           "y": 1
         }
       }
-    },
-    "applet": {
-      "defaults": {}
     }
   }
 }
