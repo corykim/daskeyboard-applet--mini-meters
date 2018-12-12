@@ -23,6 +23,12 @@ class CpuUsage extends q.DesktopApp {
   // call this function every pollingInterval
   async run() {
     return this.getCpuUsage().then(percent => {
+      // delete the previous signal
+      const lastLog = this.signalLog.slice(0,1);
+      if (lastLog.length) {
+        q.Signal.delete(lastLog[0].signal);
+      }
+
       return new q.Signal({
         points: [this.generatePoints(percent)],
         name: "CPU Usage",
@@ -41,23 +47,22 @@ class CpuUsage extends q.DesktopApp {
   }
 
   generatePoints(percent) {
-    const numberOfKeys = 10;
     // multiply the cpu percentage by the number total of keys 
-    const numberOfKeysToLight = Math.round(numberOfKeys * percent);
+    const numberOfKeysToLight = Math.round(this.getWidth() * percent);
     let points = [];
 
     // create a list of points (zones) with a color). Each point 
     // correspond to an LED
-    for (let i = 0; i < numberOfKeys; i++) {
-      points.push(new q.Point(this.getColor(i, numberOfKeysToLight)));
+    for (let i = 0; i < numberOfKeysToLight; i++) {
+      points.push(new q.Point(this.getColor(i)));
     }
 
     return points;
   }
 
   /** get a color of a zone depending on it's index on the zone array */
-  getColor(zoneIndex, numberOfKeysToLight) {
-    if (zoneIndex >= numberOfKeysToLight) {
+  getColor(zoneIndex) {
+    if (zoneIndex >= colors.length) {
       // if the zone is after the number max of keys to light. Turn off the light
       // Black color = no light
       return '#000000';

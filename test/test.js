@@ -5,6 +5,13 @@ const black = '#000000';
 
 describe('CpuUsage', function () {
   let app = new t.CpuUsage();
+  app.geometry = {
+    height: 1,
+    width: 10,
+    origin: {
+      x: 1, y: 1
+    }
+  }
 
   it('#getCpuUsage', function () {
     app.getCpuUsage().then(percent => {
@@ -14,11 +21,8 @@ describe('CpuUsage', function () {
   });
 
   it('#getColor', function() {
-    assert.equal(black, app.getColor(0, 0));
-    assert.notEqual(black, app.getColor(0, 1));
-
-    assert.equal(black, app.getColor(9, 9));
-    assert.notEqual(black, app.getColor(9, 10));
+    assert.equal(black, app.getColor(99), 'Expected big number to return black');
+    assert.notEqual(black, app.getColor(0), 'Expected 0 to return a number');
   })
 
   it('#generatePoints', function () {
