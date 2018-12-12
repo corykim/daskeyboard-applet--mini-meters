@@ -68,4 +68,8 @@ describe('CpuUsage', function () {
       assert.fail(error);
     });
   });
+
+  it('deletes old signals', function () {
+    return app.deleteOldSignals();
+  })
 })

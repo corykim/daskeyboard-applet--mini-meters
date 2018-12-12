@@ -11,7 +11,6 @@ const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00'
 
 const logger = q.logger;
 
-
 class CpuUsage extends q.DesktopApp {
   constructor() {
     super();
@@ -23,11 +22,7 @@ class CpuUsage extends q.DesktopApp {
   // call this function every pollingInterval
   async run() {
     return this.getCpuUsage().then(percent => {
-      // delete the previous signal
-      const lastLog = this.signalLog.slice(0,1);
-      if (lastLog.length) {
-        q.Signal.delete(lastLog[0].signal);
-      }
+      this.deleteOldSignals();
 
       return new q.Signal({
         points: [this.generatePoints(percent)],
@@ -44,6 +39,22 @@ class CpuUsage extends q.DesktopApp {
         resolve(v);
       })
     })
+  }
+
+  /**
+   * Delete all previous signals
+   */
+  async deleteOldSignals() {
+    // delete the previous signals
+    while (this.signalLog && this.signalLog.length) {
+      const signal = this.signalLog.pop().signal;
+      logger.debug(`Deleting previous signal: ${signal.id}`)
+      await q.Signal.delete(signal).catch(error => {
+        logger.error(`Error deleting signal ${signal.id}: ${error}`);
+      });
+
+      logger.debug(`Deleted the signal: ${signal.id}`);
+    }
   }
 
   generatePoints(percent) {
@@ -70,6 +81,11 @@ class CpuUsage extends q.DesktopApp {
       // turn on the zone with the proper color
       return colors[zoneIndex];
     }
+  }
+
+  async shutdown() {
+    await this.deleteOldSignals();
+    await super.shutdown();    
   }
 }
 
