@@ -14,7 +14,7 @@ describe('CpuUsage', function () {
   }
 
   it('#getCpuUsage', function () {
-    app.getCpuUsage().then(percent => {
+    return app.getCpuUsage().then(percent => {
       console.log("CPU Usage is: " + percent);
       assert.ok(percent);
     })
@@ -61,7 +61,7 @@ describe('CpuUsage', function () {
   });
 
   it('#run()', function () {
-    app.run().then((signal) => {
+    return app.run().then((signal) => {
       console.log(JSON.stringify(signal));
       assert.ok(signal);
     }).catch(error => {
