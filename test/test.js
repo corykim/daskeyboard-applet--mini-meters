@@ -11,19 +11,19 @@ describe('CpuUsage', function () {
     origin: {
       x: 1, y: 1
     }
-  }
+  };
 
   it('#getCpuUsage', function () {
-    app.getCpuUsage().then(percent => {
+    return app.getCpuUsage().then(percent => {
       console.log("CPU Usage is: " + percent);
       assert.ok(percent);
     })
   });
 
-  it('#getColor', function() {
+  it('#getColor', function () {
     assert.equal(black, app.getColor(99), 'Expected big number to return black');
     assert.notEqual(black, app.getColor(0), 'Expected 0 to return a number');
-  })
+  });
 
   it('#generatePoints', function () {
     const testLights = function (percent) {
@@ -35,14 +35,14 @@ describe('CpuUsage', function () {
       }
 
       return points.length;
-    }
+    };
 
     const assertLights = function (percent, expected) {
       const actual = testLights(percent);
       const message = `For CPU usage ${percent}, I have ${actual} lights `
-        + `(expected ${expected})`;  
+        + `(expected ${expected})`;
       assert(expected === actual, message);
-    }
+    };
 
     assertLights(0.04, 0);
     assertLights(0.05, 1);
@@ -61,7 +61,7 @@ describe('CpuUsage', function () {
   });
 
   it('#run()', function () {
-    app.run().then((signal) => {
+    return app.run().then((signal) => {
       console.log(JSON.stringify(signal));
       assert.ok(signal);
     }).catch(error => {
@@ -72,4 +72,4 @@ describe('CpuUsage', function () {
   it('deletes old signals', function () {
     return app.deleteOldSignals();
   })
-})
+});
