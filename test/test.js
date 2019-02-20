@@ -24,6 +24,13 @@ describe('MiniMeter', function () {
         assert.ok(percent || percent === 0);
       }))
     });
+    it('#getMetric(nvidiaGpu)', async function () {
+      return buildApp().then(app => app.getMetric(t.ModeEnum.NVIDIA_GPU).then(percent => {
+        console.log("nVidia GPU is: " + percent);
+        // Windows always return 0
+        assert.ok(percent || percent === 0);
+      }))
+    });
   })
 
   it('#getColor', async function () {
