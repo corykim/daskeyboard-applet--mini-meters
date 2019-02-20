@@ -53,17 +53,19 @@ const ModeMap = {
     */
     name: 'GPU',
     metric: async function () {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         smi(function (err, data) {
           // handle errors
           if (err) {
             logger.error(err);
-          }
-          var memory_object = data.nvidia_smi_log.gpu.fb_memory_usage
-          var used = parseInt(memory_object.used.replace(' MiB', ''))
-          var total = parseInt(memory_object.total.replace(' MiB', ''))
-          var percent = (used / total) * 100
-          resolve(percent)
+            reject(err);
+          } else {
+            var memory_object = data.nvidia_smi_log.gpu.fb_memory_usage
+            var used = parseInt(memory_object.used.replace(' MiB', ''))
+            var total = parseInt(memory_object.total.replace(' MiB', ''))
+            var percent = (used / total) * 100
+            resolve(percent)
+            }
         });
       })
     }

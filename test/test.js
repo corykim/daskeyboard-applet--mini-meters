@@ -27,8 +27,10 @@ describe('MiniMeter', function () {
     it('#getMetric(nvidiaGpu)', async function () {
       return buildApp().then(app => app.getMetric(t.ModeEnum.NVIDIA_GPU).then(percent => {
         console.log("nVidia GPU is: " + percent);
-        // Windows always return 0
+        // Does not work unless nVidia GPU is present?
         assert.ok(percent || percent === 0);
+      }).catch(error => {
+        console.error("Is an nVidia GPU present?");
       }))
     });
   })
