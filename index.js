@@ -52,7 +52,7 @@ const ModeMap = {
       https://github.com/brandonschabell/daskeyboard-applet-gpu-usage
     */
     name: 'GPU',
-    metric: async function () {
+    metric: function () {
       return new Promise((resolve, reject) => {
         smi(function (err, data) {
           // handle errors
