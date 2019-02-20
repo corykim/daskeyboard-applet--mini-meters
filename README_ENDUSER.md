@@ -1,5 +1,5 @@
 # CPU Usage
 
-Displays the CPU usage as a progress bar.
+Displays the CPU usage, free memory, and average load on individual keys.
 
-![CPU Usage on a Das Keyboard Q](assets/image.png "Q CPU Usage")
+![System Utilitization on a Das Keyboard Q](assets/image.png "Q Mini-Meters")

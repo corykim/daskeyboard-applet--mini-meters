@@ -1,14 +1,14 @@
-# Q Applet: CPU Usage
+# Q Applet: Mini-Meters
 
-Displays the CPU usage as a progress bar on a Das Keyboard Q Series.
+Displays the CPU usage, free memory, and average load on individual keys on a Das Keyboard Q Series.
 
-[GitHub repository](https://github.com/daskeyboard/q-applet-cpu-usage)
+[GitHub repository]([https://github.com/daskeyboard/q-applet-cpu-usage](https://github.com/corykim/daskeyboard-applet--mini-meters))
 
 ## Example
 
-CPU Usage as a progress bar on keys `~,1,2,3,4,5,6,7,8,9`
+All three meters enabled on three separate keys.
 
-![CPU Usage on a Das Keybaord Q](assets/image.png "Q CPU usage")
+![CPU Usage on a Das Keyboard Q](assets/image.png "Q CPU usage")
 
 ## Changelog
 
@@ -31,16 +31,13 @@ Pull requests welcome.
 
 ## Copyright / License
 
-Copyright 2014 - 2019 Das Keyboard / Metadot Corp.
+Copyright 2019 Cory Kim
 
-Licensed under the GNU General Public License Version 2.0 (or later);
-you may not use this work except in compliance with the License.
-You may obtain a copy of the License in the LICENSE file, or at:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-   http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+Application Icon made by Freepik from www.flaticon.com
