@@ -1,5 +1,5 @@
-# CPU Usage
+# Mini meters
 
 Displays the CPU usage, free memory, and average load on individual keys.
 
-![System Utilitization on a Das Keyboard Q](assets/image.png "Q Mini-Meters")
+![Mini meters on a Das Keyboard Q](assets/image.png "Mini meters applet")
