@@ -4,41 +4,77 @@ const os = require('os-utils');
 // Library to send signal to Q keyboards
 const q = require('daskeyboard-applet');
 
-// Color associated to cpu activity from low (green) to high (red).
-const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00', '#FF0000',
-  '#FF0000', '#FF0000', '#FF0000'
-];
+// Library to process colors
+const colorsys = require('colorsys');
 
 const logger = q.logger;
 
-class CpuUsage extends q.DesktopApp {
+const ModeEnum = Object.freeze({
+  CPU: 'cpu',
+  FREE_MEM: 'freemem',
+  AVERAGE_LOAD: 'avg1',
+});
+
+// the default mode, if none is specified
+const ModeDefault = ModeEnum.CPU;
+
+// defines the properties of each available mode
+const ModeMap = {
+  cpu: {
+    name: 'CPU Usage',
+    metric: function() {
+      return new Promise((resolve) => {
+        os.cpuUsage(v => {
+          resolve(v);
+        })
+      })
+    }
+  },
+  avg1: {
+    name: 'Average Load',
+    metric: async function() {
+      return os.loadavg(1);
+    }
+  },
+  freemem: {
+    name: 'Free Memory',
+    metric: async function() {
+      return os.freememPercentage();
+    }
+  }
+}
+
+class MiniMeter extends q.DesktopApp {
   constructor() {
     super();
     // run every 3000 ms
     this.pollingInterval = 3000;
-    logger.info("CPU Usage Meter ready to go!");
   }
 
   // call this function every pollingInterval
   async run() {
-    return this.getCpuUsage().then(percent => {
+    let mode = this.config.mode || ModeDefault
+    return this.getMetric(mode).then(percent => {
+      logger.debug(`Got ${percent} percent`);
       this.deleteOldSignals();
 
       return new q.Signal({
         points: [this.generatePoints(percent)],
-        name: "CPU Usage",
+        name: ModeMap[mode].name,
         message: Math.round(percent * 100) + "%",
         isMuted: true, // don't flash the Q button on each signal
       });
     });
   }
 
-  async getCpuUsage() {
-    return new Promise((resolve) => {
-      os.cpuUsage(v => {
-        resolve(v);
-      })
-    })
+  async getMetric(mode) {
+    logger.debug(`Mode is ${mode}`);
+    if (!mode) {
+      mode = ModeDefault;
+      logger.debug(`Defaulted mode to ${mode}`);
+    }
+   
+    return ModeMap[mode].metric();
   }
 
   /**
@@ -58,39 +94,32 @@ class CpuUsage extends q.DesktopApp {
   }
 
   generatePoints(percent) {
-    // multiply the cpu percentage by the number total of keys 
-    const numberOfKeysToLight = Math.round(this.getWidth() * percent);
-    let points = [];
-
-    // create a list of points (zones) with a color). Each point 
-    // correspond to an LED
-    for (let i = 0; i < numberOfKeysToLight; i++) {
-      points.push(new q.Point(this.getColor(i)));
-    }
-
-    return points;
+    return [new q.Point(this.getColor(percent))];
   }
 
-  /** get a color of a zone depending on it's index on the zone array */
-  getColor(zoneIndex) {
-    if (zoneIndex >= colors.length) {
-      // if the zone is after the number max of keys to light. Turn off the light
-      // Black color = no light
-      return '#000000';
+  getColor(percent) {
+    if (percent < 0 || percent > 1) {
+      return 'black'
     } else {
-      // turn on the zone with the proper color
-      return colors[zoneIndex];
+      return colorsys.hslToHex({
+        // hue ranges from blue to red
+        h: 256 - Math.round(percent * 256),
+        s: 100,
+        // lightness ranges from 25 - 50
+        l: percent * 25 + 25
+      });
     }
   }
 
   async shutdown() {
     await this.deleteOldSignals();
-    await super.shutdown();    
+    await super.shutdown();
   }
 }
 
 module.exports = {
-  CpuUsage: CpuUsage
+  MiniMeter: MiniMeter,
+  ModeEnum: ModeEnum
 };
 
-const cpuUsage = new CpuUsage();
+const miniMeter = new MiniMeter();

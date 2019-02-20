@@ -3,73 +3,90 @@ const t = require('../index');
 
 const black = '#000000';
 
-describe('CpuUsage', function () {
-  let app = new t.CpuUsage();
-  app.geometry = {
-    height: 1,
-    width: 10,
-    origin: {
-      x: 1, y: 1
-    }
-  };
+describe('MiniMeter', function () {
+  describe('#getMetric', function () {
+    it('#getMetric(default)', async function () {
+      return buildApp().then(app => app.getMetric(t.ModeEnum.CPU).then(percent => {
+        console.log("CPU Usage is: " + percent);
+        assert.ok(percent);
+      }))
+    });
+    it('#getMetric(freemem)', async function () {
+      return buildApp().then(app => app.getMetric(t.ModeEnum.FREE_MEM).then(percent => {
+        console.log("Free Mem is: " + percent);
+        assert.ok(percent);
+      }))
+    });
+    it('#getMetric(average)', async function () {
+      return buildApp().then(app => app.getMetric(t.ModeEnum.AVERAGE_LOAD).then(percent => {
+        console.log("Average Load is: " + percent);
+        // Windows always return 0
+        assert.ok(percent || percent === 0);
+      }))
+    });
+  })
 
-  it('#getCpuUsage', function () {
-    return app.getCpuUsage().then(percent => {
-      console.log("CPU Usage is: " + percent);
-      assert.ok(percent);
+  it('#getColor', async function () {
+    return buildApp().then(app => {
+      assert.equal('black', app.getColor(99), 'Expected big number to return black');
+      assert.equal('black', app.getColor(-1), 'Expected negative number to return black');
+
+      assert(app.getColor(0), 'Expected 0 to return a color');
+      assert.notEqual(black, app.getColor(0), 'Expected 0 to return a color');
+
+      assert(app.getColor(.999), 'Expected .999 to return a color');
+      assert.notEqual(black, app.getColor(.999), 'Expected .999 to return a color');
     })
   });
 
-  it('#getColor', function () {
-    assert.equal(black, app.getColor(99), 'Expected big number to return black');
-    assert.notEqual(black, app.getColor(0), 'Expected 0 to return a number');
-  });
-
-  it('#generatePoints', function () {
-    const testLights = function (percent) {
-      const points = app.generatePoints(percent);
-      for (let i = 0; i < points.length; i += 1) {
-        if (points[i].color === black) {
-          return i;
-        }
+  it('#generatePoints', async function () {
+    return buildApp().then(app => {
+      for (let i = 0; i < 1; i += 0.01) {
+        const points = app.generatePoints(i);
+        assert.equal(1, points.length)
+        assert.notEqual('black', points[0].color);
+        assert(points[0].color.match(/^#[A-Fa-f0-9]{6}$/));
       }
-
-      return points.length;
-    };
-
-    const assertLights = function (percent, expected) {
-      const actual = testLights(percent);
-      const message = `For CPU usage ${percent}, I have ${actual} lights `
-        + `(expected ${expected})`;
-      assert(expected === actual, message);
-    };
-
-    assertLights(0.04, 0);
-    assertLights(0.05, 1);
-    assertLights(0.1, 1);
-    assertLights(0.2, 2);
-    assertLights(0.3, 3);
-    assertLights(0.4, 4);
-    assertLights(0.5, 5);
-    assertLights(0.6, 6);
-    assertLights(0.7, 7);
-    assertLights(0.8, 8);
-    assertLights(0.9, 9);
-    assertLights(0.95, 10);
-    assertLights(1.0, 10);
-    assertLights(1.1, 10);
+    })
   });
 
-  it('#run()', function () {
-    return app.run().then((signal) => {
-      console.log(JSON.stringify(signal));
-      assert.ok(signal);
-    }).catch(error => {
-      assert.fail(error);
-    });
+  it('#run()', async function () {
+    return buildApp().then(async app => {
+      try {
+        const signal = await app.run();
+        console.log(JSON.stringify(signal));
+        assert.ok(signal);
+        assert.ok(signal.points[0][0], "I should have at least one point");
+      }
+      catch (error) {
+        assert.fail(error);
+      }
+    })
   });
 
   it('deletes old signals', function () {
-    return app.deleteOldSignals();
+    return buildApp().then(app => {
+      return app.deleteOldSignals();
+    })
   })
 });
+
+async function buildApp(config) {
+  config = config || {};
+  let app = new t.MiniMeter();
+  app.config = {
+    mode: t.ModeEnum.CPU,
+    geometry: {
+      height: 1,
+      width: 1,
+      origin: {
+        x: 1,
+        y: 1
+      }
+    },
+
+    ...config
+  };
+
+  return app;
+}
