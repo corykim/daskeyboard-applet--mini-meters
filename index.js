@@ -63,7 +63,7 @@ const ModeMap = {
             var memory_object = data.nvidia_smi_log.gpu.fb_memory_usage
             var used = parseInt(memory_object.used.replace(' MiB', ''))
             var total = parseInt(memory_object.total.replace(' MiB', ''))
-            var percent = (used / total) * 100
+            var percent = used / total
             resolve(percent)
             }
         });
@@ -128,7 +128,7 @@ class MiniMeter extends q.DesktopApp {
 
   getColor(percent) {
     if (percent < 0 || percent > 1) {
-      return 'black'
+      return '#000000' // Black
     } else {
       return colorsys.hslToHex({
         // hue ranges from blue to red
