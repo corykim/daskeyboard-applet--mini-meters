@@ -37,8 +37,8 @@ describe('MiniMeter', function () {
 
   it('#getColor', async function () {
     return buildApp().then(app => {
-      assert.equal('black', app.getColor(99), 'Expected big number to return black');
-      assert.equal('black', app.getColor(-1), 'Expected negative number to return black');
+      assert.equal(black, app.getColor(99), 'Expected big number to return black');
+      assert.equal(black, app.getColor(-1), 'Expected negative number to return black');
 
       assert(app.getColor(0), 'Expected 0 to return a color');
       assert.notEqual(black, app.getColor(0), 'Expected 0 to return a color');
