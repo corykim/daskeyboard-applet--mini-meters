@@ -1,7 +1,7 @@
 {
   "name": "daskeyboard-applet--mini-meters",
   "displayName": "Mini-Meter",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Displays system activity.",
   "longDescription": "Keep an eye on the system activity on your Q keyboard!",
   "officialProductName": "System Mini-Meters",
