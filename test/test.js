@@ -24,12 +24,21 @@ describe('MiniMeter', function () {
         assert.ok(percent || percent === 0);
       }))
     });
+    it('#getMetric(nvidiaGpu)', async function () {
+      return buildApp().then(app => app.getMetric(t.ModeEnum.NVIDIA_GPU).then(percent => {
+        console.log("nVidia GPU is: " + percent);
+        // Does not work unless nVidia GPU is present?
+        assert.ok(percent || percent === 0);
+      }).catch(error => {
+        console.error("Is an nVidia GPU present?");
+      }))
+    });
   })
 
   it('#getColor', async function () {
     return buildApp().then(app => {
-      assert.equal('black', app.getColor(99), 'Expected big number to return black');
-      assert.equal('black', app.getColor(-1), 'Expected negative number to return black');
+      assert.equal(black, app.getColor(99), 'Expected big number to return black');
+      assert.equal(black, app.getColor(-1), 'Expected negative number to return black');
 
       assert(app.getColor(0), 'Expected 0 to return a color');
       assert.notEqual(black, app.getColor(0), 'Expected 0 to return a color');

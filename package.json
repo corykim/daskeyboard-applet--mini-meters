@@ -33,6 +33,7 @@
     "colorsys": "^1.0.22",
     "daskeyboard-applet": "^2.10.12",
     "mocha": "^5.2.0",
+    "node-nvidia-smi": "^1.0.0",
     "os-utils": "^0.0.14",
     "request": "^2.88.0"
   },
@@ -47,23 +48,33 @@
         }
       }
     },
-    "questions": [{
-      "key": "mode",
-      "label": "What should this meter measure?",
-      "help": "You can select among a handful of system metrics.",
-      "required": true,
-      "order": 1,
-      "controlType": "dropdown",
-      "options": [{
-        "key": "cpu",
-        "value": "CPU Usage"
-      }, {
-        "key": "avg1",
-        "value": "Average Load, Last 1 Minute"
-      }, {
-        "key": "freemem",
-        "value": "Free Memory"
-      }]
-    }]
+    "questions": [
+      {
+        "key": "mode",
+        "label": "What should this meter measure?",
+        "help": "You can select among a handful of system metrics.",
+        "required": true,
+        "order": 1,
+        "controlType": "dropdown",
+        "options": [
+          {
+            "key": "cpu",
+            "value": "CPU Usage"
+          },
+          {
+            "key": "avg1",
+            "value": "Average Load, Last 1 Minute"
+          },
+          {
+            "key": "freemem",
+            "value": "Free Memory"
+          },
+          {
+            "key": "nvidiaGpu",
+            "value": "nVidia GPU Usage"
+          }
+        ]
+      }
+    ]
   }
 }

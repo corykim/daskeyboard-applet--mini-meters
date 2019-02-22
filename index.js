@@ -7,12 +7,16 @@ const q = require('daskeyboard-applet');
 // Library to process colors
 const colorsys = require('colorsys');
 
+// Library to track gpuUsage
+const smi = require('node-nvidia-smi');
+
 const logger = q.logger;
 
 const ModeEnum = Object.freeze({
   CPU: 'cpu',
   FREE_MEM: 'freemem',
   AVERAGE_LOAD: 'avg1',
+  NVIDIA_GPU: 'nvidiaGpu',
 });
 
 // the default mode, if none is specified
@@ -22,7 +26,7 @@ const ModeDefault = ModeEnum.CPU;
 const ModeMap = {
   cpu: {
     name: 'CPU Usage',
-    metric: function() {
+    metric: function () {
       return new Promise((resolve) => {
         os.cpuUsage(v => {
           resolve(v);
@@ -32,16 +36,41 @@ const ModeMap = {
   },
   avg1: {
     name: 'Average Load',
-    metric: async function() {
+    metric: async function () {
       return os.loadavg(1);
     }
   },
   freemem: {
     name: 'Free Memory',
-    metric: async function() {
+    metric: async function () {
       return os.freememPercentage();
     }
+  },
+  nvidiaGpu: {
+    /*
+      Credit to Brandon Schabell for GPU Usage applet
+      https://github.com/brandonschabell/daskeyboard-applet-gpu-usage
+    */
+    name: 'GPU',
+    metric: function () {
+      return new Promise((resolve, reject) => {
+        smi(function (err, data) {
+          // handle errors
+          if (err) {
+            logger.error(err);
+            reject(err);
+          } else {
+            var memory_object = data.nvidia_smi_log.gpu.fb_memory_usage
+            var used = parseInt(memory_object.used.replace(' MiB', ''))
+            var total = parseInt(memory_object.total.replace(' MiB', ''))
+            var percent = used / total
+            resolve(percent)
+            }
+        });
+      })
+    }
   }
+
 }
 
 class MiniMeter extends q.DesktopApp {
@@ -73,7 +102,7 @@ class MiniMeter extends q.DesktopApp {
       mode = ModeDefault;
       logger.debug(`Defaulted mode to ${mode}`);
     }
-   
+
     return ModeMap[mode].metric();
   }
 
@@ -99,7 +128,7 @@ class MiniMeter extends q.DesktopApp {
 
   getColor(percent) {
     if (percent < 0 || percent > 1) {
-      return 'black'
+      return '#000000' // Black
     } else {
       return colorsys.hslToHex({
         // hue ranges from blue to red
