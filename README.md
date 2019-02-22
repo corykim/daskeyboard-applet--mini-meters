@@ -1,14 +1,14 @@
-# Q Applet: Mini-Meters
+# Q Applet: Mini Meters
 
-Displays the CPU usage, free memory, GPU usage, and average load on individual keys on a Das Keyboard Q Series.
+Displays the CPU usage, free memory, GPU usage, or average load on individual keys on a Das Keyboard Q Series.
 
-[GitHub repository]([https://github.com/daskeyboard/q-applet-cpu-usage](https://github.com/corykim/daskeyboard-applet--mini-meters))
+[GitHub repository](https://github.com/corykim/daskeyboard-applet--mini-meters)
 
 ## Example
 
 Three meters enabled on three separate keys.
 
-![Mini-Meters on a Das Keyboard Q](assets/image.png "Q Mini-Meters")
+![Mini Meters on a Das Keyboard Q](assets/image.png "Mini Meters applet")
 
 ## Changelog
 
