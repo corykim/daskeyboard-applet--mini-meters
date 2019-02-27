@@ -56,6 +56,7 @@
         "required": true,
         "order": 1,
         "controlType": "dropdown",
+        "value": "cpu",
         "options": [
           {
             "key": "cpu",
